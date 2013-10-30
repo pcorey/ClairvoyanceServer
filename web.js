@@ -19,7 +19,7 @@ io.sockets.on('connection', function(socket) {
    socket.on('selection', function(data) {
       console.log('Selection recieved.');
       console.log('Broadcasting ' + data);
-      socket.emit('broadcast', data);
+      sockets.emit('broadcast', data);
    });
 });
 
