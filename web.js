@@ -18,6 +18,7 @@ server.listen(port, function() {
 io.sockets.on('connection', function(socket) {
    socket.on('selection', function(data) {
       console.log(data);
+      socket.emit('broadcast', data);
    });
 });
 
