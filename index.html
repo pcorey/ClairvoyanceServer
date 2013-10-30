@@ -8,6 +8,10 @@
          function sendSelection(num) {
             socket.emit('selection', {selection: num});
          }
+
+         socket.on('broadcast', function(data) {
+            alert('broadcast recieved for ' + data.selection);
+         });
       </script>
    </head>
    <body>
