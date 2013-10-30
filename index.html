@@ -1,8 +1,19 @@
 <!DOCTYPE html>
 <html>
    <head>
+      <script src="/socket.io/socket.io.js"></script>
+      <script>
+         var socket = io.connect('http://clairvoy.herokuapp.com');
+
+         function sendSelection(num) {
+            socket.emit('selection', {selection: num});
+         }
+      </script>
    </head>
    <body>
       <p>Hello!</p>
+      <a href="#" onclick="sendSelection(1); return false;">1</a>
+      <a href="#" onclick="sendSelection(2); return false;">2</a>
+      <a href="#" onclick="sendSelection(3); return false;">3</a>
    </body>
 </html>

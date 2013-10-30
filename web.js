@@ -1,6 +1,8 @@
-var express = require('express');
-var app = express.createServer();
-var io = require('socket.io').listen(app);
+var express = require('express'),
+    app = express(),
+    http = require('http'),
+    server = http.createServer(app),
+    io = require('socket.io').listen(server);
 
 app.use(express.logger());
 
@@ -9,19 +11,13 @@ app.get('/', function (req, res) {
 });
 
 var port = process.env.PORT || 5000;
-app.listen(port, function() {
+server.listen(port, function() {
    console.log('Listening on ' + port);
 });
 
-/*var express = require("express");
-var app = express();
-app.use(express.logger());
-
-app.get('/', function(request, response) {
-     response.send('Hello World!');
+io.sockets.on('connection', function(socket) {
+   socket.on('selection', function(data) {
+      console.log(data);
+   });
 });
 
-var port = process.env.PORT || 5000;
-app.listen(port, function() {
-     console.log("Listening on " + port);
-});*/
