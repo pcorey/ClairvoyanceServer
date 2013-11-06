@@ -17,7 +17,7 @@
 	 	/* Initial Placement
 		----------------------------*/
 	 	_init : function(){
-	 		
+
 	 		vars.slideCount = 0;
 			vars.socket = io.connect('http://clairvoy.herokuapp.com');
 			vars.socket.on('broadcast', function(data) {
@@ -227,6 +227,7 @@
 	 	/* Before Slide Transition
 		----------------------------*/
 	 	beforeAnimation : function(direction){
+	 		vars.slideCount++;
 		    if (api.options.progress_bar && !vars.is_paused) $(vars.progress_bar).stop().css({left : -$(window).width()});
 		  	
 		  	/* Update Fields
@@ -281,7 +282,6 @@
 	 	/* After Slide Transition
 		----------------------------*/
 	 	afterAnimation : function(){
-	 		vars.slideCount++;
 	 		setTimeout(function(slide) {
 	 			if (slide == vars.slideCount) {
 	 				vars.socket.emit('selection', {selection: vars.current_slide+1});
