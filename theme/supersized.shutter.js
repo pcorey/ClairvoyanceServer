@@ -14,13 +14,13 @@
 (function($){
 	
 	theme = {
-	 	
+	 	var socket = null;
 	 	
 	 	/* Initial Placement
 		----------------------------*/
 	 	_init : function(){
 	 		
-			var socket = io.connect('http://clairvoy.herokuapp.com');
+			socket = io.connect('http://clairvoy.herokuapp.com');
 			socket.on('broadcast', function(data) {
             alert('broadcast recieved for ' + data.selection);
          });
