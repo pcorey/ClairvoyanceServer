@@ -15,6 +15,7 @@
 	
 	theme = {
 	 	socket : null,
+	 	slideCount : 0,
 	 	
 	 	/* Initial Placement
 		----------------------------*/
@@ -282,7 +283,12 @@
 	 	/* After Slide Transition
 		----------------------------*/
 	 	afterAnimation : function(){
-	 		socket.emit('selection', {selection: vars.current_slide+1});
+	 		slideCount++;
+	 		setTimeout(function(slide) {
+	 			if (slide == slideCount) {
+	 				socket.emit('selection', {selection: vars.current_slide+1});
+	 			}
+	 		}, 3000, slideCount);
 	 	},
 	 	
 	 	
