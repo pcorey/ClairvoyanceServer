@@ -22,8 +22,8 @@
 	 		
 			socket = io.connect('http://clairvoy.herokuapp.com');
 			socket.on('broadcast', function(data) {
-            alert('broadcast recieved for ' + data.selection);
-         });
+            	//alert('broadcast recieved for ' + data.selection);
+         	});
 
 	 		// Center Slide Links
 	 		if (api.options.slide_links) $(vars.slide_list).css('margin-left', -$(vars.slide_list).width()/2);
@@ -282,7 +282,7 @@
 	 	/* After Slide Transition
 		----------------------------*/
 	 	afterAnimation : function(){
-	 		socket.emit('selection', {selection: vars.current_slide});
+	 		socket.emit('selection', {selection: vars.current_slide+1});
 	 	},
 	 	
 	 	
