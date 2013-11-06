@@ -6,6 +6,11 @@ var express = require('express'),
 
 app.use(express.logger());
 
+app.use("/css", express.static(__dirname + '/css'));
+app.use("/img", express.static(__dirname + '/img'));
+app.use("/js", express.static(__dirname + '/js'));
+app.use("/theme", express.static(__dirname + '/theme'));
+
 app.get('/', function (req, res) {
    res.sendfile(__dirname + '/demo.html');
 });
