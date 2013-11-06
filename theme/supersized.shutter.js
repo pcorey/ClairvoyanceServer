@@ -14,15 +14,13 @@
 (function($){
 	
 	theme = {
-	 	socket : null,
-	 	slideCount : 0,
-	 	
 	 	/* Initial Placement
 		----------------------------*/
 	 	_init : function(){
 	 		
-			socket = io.connect('http://clairvoy.herokuapp.com');
-			socket.on('broadcast', function(data) {
+	 		vars.slideCount = 0;
+			vars.socket = io.connect('http://clairvoy.herokuapp.com');
+			vars.socket.on('broadcast', function(data) {
             	//alert('broadcast recieved for ' + data.selection);
          	});
 
@@ -283,12 +281,12 @@
 	 	/* After Slide Transition
 		----------------------------*/
 	 	afterAnimation : function(){
-	 		slideCount++;
+	 		vars.slideCount++;
 	 		setTimeout(function(slide) {
-	 			if (slide == slideCount) {
-	 				socket.emit('selection', {selection: vars.current_slide+1});
+	 			if (slide == vars.slideCount) {
+	 				vars.socket.emit('selection', {selection: vars.current_slide+1});
 	 			}
-	 		}, 3000, slideCount);
+	 		}, 3000, vars.slideCount);
 	 	},
 	 	
 	 	
