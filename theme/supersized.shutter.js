@@ -14,7 +14,7 @@
 (function($){
 	
 	theme = {
-	 	var socket : null,
+	 	socket : null,
 	 	
 	 	/* Initial Placement
 		----------------------------*/
